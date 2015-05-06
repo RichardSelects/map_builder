@@ -1,0 +1,1 @@
+NOT drag and drop: instead, the canvas is a grid of blank tiles, hovering over one shows the currently selected tile, clicking places that tile
