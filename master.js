@@ -1,12 +1,11 @@
 var WorkSpace = Backbone.View.extend({
 	initialize: function() {
-		console.log("test");
 		this.selectedTile = null;
 		this.isPainting = false;
 	},
 
 	events: {
-		'click #palette .tile': 		'selectTile',
+		'click .menu .tile': 			'selectTile',
 
 		'mousedown #canvas .tile': 		'startPainting',
 		'mouseup #canvas .tile': 		'stopPainting',
@@ -18,7 +17,7 @@ var WorkSpace = Backbone.View.extend({
 	selectTile: function(e) {
 		e.preventDefault();
 		var tile = $(e.currentTarget);
-		$("#palette .tile").removeClass("selected");
+		$(".menu .tile").removeClass("selected");
 		tile.toggleClass("selected", this.selectedTile !== tile.attr("src"));
 		this.selectedTile = (this.selectedTile != null && this.selectedTile.src == tile.attr("src")) ? null : { src: tile.attr("src"), overlay: tile.data("overlay") };
 		console.log(this.selectedTile);

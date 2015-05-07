@@ -1,4 +1,7 @@
 /***********************************************\
+* MIXINS
+\***********************************************/
+/***********************************************\
 * RESET
 \***********************************************/
 html, body, div, span, applet, object, iframe,
@@ -18,24 +21,118 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 /***********************************************\
 * GLOBAL
 \***********************************************/
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/***********************************************\
+* HEADER
+\***********************************************/
+header {
+  position: fixed;
+  height: 90px;
+  width: 100%;
+  background: #343434;
+  border-bottom: 1px solid #232323;
+  overflow: none; }
+
+/***********************************************\
+* MENUS
+\***********************************************/
+.menu {
+  position: fixed;
+  top: 90px;
+  height: calc(100% - 90px);
+  width: 296px;
+  background: rgba(52, 52, 52, 0.95);
+  border: 1px solid #232323; }
+  .menu .heading {
+    padding: 8px;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: white;
+    background-image: linear-gradient(-180deg, #343434 0%, #232323 97%, #363636 100%);
+    border: 1px solid #232323;
+    box-shadow: inset 0px 2px 0px 0px #424242; }
+  .menu.menu-left {
+    left: 0px; }
+  .menu.menu-right {
+    right: 0px; }
+  .menu .heading-buttons {
+    display: inline-block;
+    float: right; }
+    .menu .heading-buttons a {
+      color: #858585;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75); }
+  .menu .menu-list li {
+    padding: 16px 8px;
+    color: white;
+    border-top: 1px solid #232323;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75); }
+    .menu .menu-list li.active {
+      background-image: linear-gradient(-180deg, #343434 0%, #585858 50%, #646464 100%);
+      border-left: 4px solid #3b85f3; }
+  .menu .dropdown {
+    position: relative;
+    width: 96%;
+    margin: 8px auto;
+    padding: 6px 10px;
+    border: 1px solid #1a1a1a;
+    border-radius: 2px;
+    overflow: hidden;
+    color: white;
+    text-transform: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+    background-image: linear-gradient(-180deg, #343434 0%, #232323 97%, #363636 100%); }
+    .menu .dropdown .dropdown-icon {
+      float: right; }
+    .menu .dropdown .dropdown-list {
+      display: none; }
+  .menu .menu-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%; }
+    .menu .menu-grid.menu-grid-tile {
+      padding: 4px 8px; }
+    .menu .menu-grid.menu-grid-sprite {
+      padding: 4px 12px; }
+    .menu .menu-grid li {
+      display: inline-block;
+      margin: 4px 0;
+      background: #575757; }
+      .menu .menu-grid li.selected {
+        border: 2px solid #f4eec5; }
+      .menu .menu-grid li.tile {
+        height: 64px;
+        width: 64px; }
+      .menu .menu-grid li.sprite {
+        height: 128px;
+        width: 128px; }
+
 /***********************************************\
 * CANVAS
 \***********************************************/
 #canvas {
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-       -o-user-select: none;
-          user-select: none;
-}
-
-.tile {
-  float: left;
-  height: 64px;
-  width: 64px;
-  margin: 0;
-  border: 1px solid #DDDDDD;
-}
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: url("./sample.png") center center no-repeat;
+  background-size: cover; }
 
 #canvas .tile img {
   display: block;
@@ -43,26 +140,18 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   height: 100%;
   width: 100%;
   -webkit-user-drag: none;
-     -moz-user-drag: none;
-      -ms-user-drag: none;
-       -o-user-drag: none;
-          user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-       -o-user-select: none;
-          user-select: none;
-}
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
 
 /***********************************************\
 * PALETTE
 \***********************************************/
-.palette {
-  margin: 2px;
-}
-
-.palette.selected {
-  box-shadow: 0px 0px 4px rgba(40, 40, 200, 0.75);
-}
 
 /*# sourceMappingURL=master.css.map */

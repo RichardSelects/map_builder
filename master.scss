@@ -1,4 +1,15 @@
 /***********************************************\
+* MIXINS
+\***********************************************/
+@mixin textShadow {
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+@mixin bgGradDark {
+	background-image: linear-gradient(-180deg, rgba(52, 52, 52, 1) 0%, rgba(35, 35, 35, 1) 97%, rgba(54, 54, 54, 1) 100%);
+}
+
+/***********************************************\
 * RESET
 \***********************************************/
 html, body, div, span, applet, object, iframe,
@@ -19,27 +30,175 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 /***********************************************\
 * GLOBAL
 \***********************************************/
+body {
+	font-family: 'Arial', sans-serif;
+	font-size: 14px;
+}
 
+* {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box;
+	     -o-box-sizing: border-box;
+			box-sizing: border-box;
+}
+
+/***********************************************\
+* HEADER
+\***********************************************/
+header {
+	position: fixed;
+	height: 90px;
+	width: 100%;
+	background: rgba(52, 52, 52, 1);
+	border-bottom: 1px solid rgba(35, 35, 35, 1);
+	overflow: none;
+}
+
+/***********************************************\
+* MENUS
+\***********************************************/
+.menu {
+	position: fixed;
+	top: 90px;
+	height: calc(100% - 90px);
+	width: 296px;
+	background: rgba(52, 52, 52, 0.95);
+	border: 1px solid rgba(35, 35, 35, 1);
+
+	.heading {
+		padding: 8px;
+		font-family: 'Arial', sans-serif;
+		text-transform: uppercase;
+		font-size: 12px;
+		letter-spacing: 1px;
+		color: rgba(255, 255, 255, 1);
+		@include bgGradDark;
+		border: 1px solid rgba(35, 35, 35, 1);
+		box-shadow: inset 0px 2px 0px 0px rgba(66, 66, 66, 1);
+	}
+
+	&.menu-left {
+		left: 0px
+	}
+
+	&.menu-right {
+		right: 0px;
+	}
+
+	.heading-buttons {
+		display: inline-block;
+		float: right;
+
+		a {
+			color: rgba(133, 133, 133, 1);
+			@include textShadow;
+		}
+	}
+
+	.menu-list li {
+		padding: 16px 8px;
+		color: rgba(255, 255, 255, 1);
+		border-top: 1px solid rgba(35, 35, 35, 1);
+		@include textShadow;
+
+		&.active {
+			background-image: linear-gradient(-180deg, rgba(52, 52, 52, 1) 0%, rgba(88, 88, 88, 1) 50%, rgba(100, 100, 100, 1) 100%);
+			border-left: 4px solid rgba(59, 133, 243, 1);
+		}
+	}
+
+	.dropdown {
+		position: relative;
+		width: 96%;
+		margin: 8px auto;
+		padding: 6px 10px;
+		border: 1px solid rgba(26, 26, 26, 1);
+		border-radius: 2px;
+		overflow: hidden;
+		color: rgba(255, 255, 255, 1);
+		text-transform: none;
+		@include textShadow;
+		@include bgGradDark;
+
+		.dropdown-icon {
+			float: right;
+		}
+
+		.dropdown-list {
+			display: none;
+		}
+	}
+
+	.menu-grid {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		width: 100%;
+
+		&.menu-grid-tile {
+			padding: 4px 8px;
+		}
+
+		&.menu-grid-sprite {
+			padding: 4px 12px;
+		}
+
+		li {
+			display: inline-block;
+			margin: 4px 0;
+			background: rgba(87, 87, 87, 1);
+
+			&.selected {
+				border: 2px solid rgba(244, 238, 197, 1);	
+			}
+
+			&.tile {
+				height: 64px;
+				width: 64px;
+			}
+
+			&.sprite {
+				height: 128px;
+				width: 128px;
+			}
+		}
+	}
+}
 
 /***********************************************\
 * CANVAS
 \***********************************************/
-canvas {
-	display: block;
-	position: relative;
-	min-height: 100px;
+#canvas {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+       -o-user-select: none;
+          user-select: none;
+	position: fixed;
 	height: 100%;
 	width: 100%;
-	background: #CCCCCC;
+	background: url('./sample.png') center center no-repeat;
+	background-size: cover;
+}
+
+#canvas .tile img {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  -webkit-user-drag: none;
+     -moz-user-drag: none;
+      -ms-user-drag: none;
+       -o-user-drag: none;
+          user-drag: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+       -o-user-select: none;
+          user-select: none;
 }
 
 /***********************************************\
 * PALETTE
 \***********************************************/
-.tile {
-	float: left;
-	height: 64px;
-	width: 64px;
-	margin: 2px;
-	border: 1px solid #DDDDDD;
-}
