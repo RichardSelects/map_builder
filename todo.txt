@@ -1,1 +1,7 @@
 NOT drag and drop: instead, the canvas is a grid of blank tiles, hovering over one shows the currently selected tile, clicking places that tile
+
+Tool Workflow:
+	1) [ + New Map ]
+	2) Height: [      ], Width: [       ]
+	3) (render canvas)
+	4) 

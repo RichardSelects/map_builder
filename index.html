@@ -1,101 +1,112 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-  <meta name="viewport" content="user-scalable=no, width=device-width,
-      initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Map Builder</title>
+  <title>Game Builder</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8">
 
+  <!-- Javascript -->
 
 </head>
 	<body>
 		
-    <div class="container-fluid">
-      <div class="row">
-        <div id="canvas" class="col-sm-9">
-          <div class='row'><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div></div><div class='row'><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div></div><div class='row'><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div></div><div class='row'><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div></div><div class='row'><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div></div><div class='row'><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div></div><div class='row'><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div></div><div class='row'><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div></div><div class='row'><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div></div><div class='row'><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div><div class='tile'></div></div>        </div>
+		<div id="canvas"></div>
 
-        <div class="col-sm-2">
-          
-          <div id="tools" class="form-group">
-            <div class="btn-group">
-              <button class="btn btn-default active">Paint</button>
-              <button class="btn btn-default">Erase</button>
-            </div>
-          </div>
+		<header></header>
 
-          <div id="palette" class="form-group">
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="ground-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#ground" aria-expanded="true" aria-controls="ground">
-                      Ground                    </a>
-                  </h4>
-                </div>
-                <div id="ground" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="ground">
-                  <div class="panel-body">
-                    <img class='tile palette' data-overlay='false' src='tiles/ground/dirt-alt-1.gif'><img class='tile palette' data-overlay='false' src='tiles/ground/dirt-alt-2.gif'><img class='tile palette' data-overlay='false' src='tiles/ground/dirt-plain.gif'><img class='tile palette' data-overlay='false' src='tiles/ground/grass-flowers-1.gif'><img class='tile palette' data-overlay='false' src='tiles/ground/grass-flowers-2.gif'><img class='tile palette' data-overlay='false' src='tiles/ground/grass-short.gif'><img class='tile palette' data-overlay='false' src='tiles/ground/grass-tall.gif'>                  </div>
-                </div>
-              </div>
-                            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="misc-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#misc" aria-expanded="false" aria-controls="misc">
-                      Misc                    </a>
-                  </h4>
-                </div>
-                <div id="misc" class="panel-collapse collapse " role="tabpanel" aria-labelledby="misc">
-                  <div class="panel-body">
-                    <img class='tile palette' data-overlay='true' src='tiles/misc/sign-post.gif'>                  </div>
-                </div>
-              </div>
-                            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="walls-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#walls" aria-expanded="false" aria-controls="walls">
-                      Walls                    </a>
-                  </h4>
-                </div>
-                <div id="walls" class="panel-collapse collapse " role="tabpanel" aria-labelledby="walls">
-                  <div class="panel-body">
-                    <img class='tile palette' data-overlay='true' src='tiles/walls/post.gif'><img class='tile palette' data-overlay='true' src='tiles/walls/posts.gif'>                  </div>
-                </div>
-              </div>
-                            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="water-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#water" aria-expanded="false" aria-controls="water">
-                      Water                    </a>
-                  </h4>
-                </div>
-                <div id="water" class="panel-collapse collapse " role="tabpanel" aria-labelledby="water">
-                  <div class="panel-body">
-                    <img class='tile palette' data-overlay='false' src='tiles/water/coast-e.gif'><img class='tile palette' data-overlay='false' src='tiles/water/coast-n.gif'><img class='tile palette' data-overlay='false' src='tiles/water/coast-ne.gif'><img class='tile palette' data-overlay='false' src='tiles/water/coast-nw.gif'><img class='tile palette' data-overlay='false' src='tiles/water/coast-w.gif'><img class='tile palette' data-overlay='false' src='tiles/water/water.gif'>                  </div>
-                </div>
-              </div>
-                          </div>
-          </div>
+		<div class="menu menu-left">
+			<section>
+				<div class="heading">
+					Maps
+					<div class="heading-buttons">
+						<a href="#"><i class="fa fa-fw fa-minus"></i></a>
+						<a href="#"><i class="fa fa-fw fa-copy"></i></a>
+						<a href="#"><i class="fa fa-fw fa-plus"></i></a>
+					</div>
+				</div>
 
-        </div>
+				<ul class="menu-list">
+					<li class="active">Forest Town</li>
+					<li>Desert Waste</li>
+					<li>Desert Oasis</li>
+				</ul>
+			</section>
+		</div>
 
-      </div>
-    </div>
+		<div class="menu menu-right">
+			<section>
+				<div class="heading">
+					Tiles
+					<div class="heading-buttons">
+						<a href="#"><i class="fa fa-fw fa-minus"></i></a>
+						<a href="#"><i class="fa fa-fw fa-plus"></i></a>
+					</div>
+					<div class="dropdown">
+						<span class="selected">Ground</span>
+						<span class="dropdown-icon"><i class="fa fa-sort"></i></span>
+						<ul class="dropdown-list">
+							<li>Ground</li>
+							<li>Walls</li>
+							<li>Buildings</li>
+						</ul>
+					</div>
+				</div>
+				<ul class="menu-grid menu-grid-tile">
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+					<li class="tile"></li>
+				</ul>
+			</section>
 
-  <!-- Javascript -->
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
-  <script type="text/javascript" src="master.js"></script>
+			<section>
+				<div class="heading">
+					Sprites
+					<div class="heading-buttons">
+						<a href="#"><i class="fa fa-fw fa-minus"></i></a>
+						<a href="#"><i class="fa fa-fw fa-plus"></i></a>
+					</div>
+					<div class="dropdown">
+						<span class="selected">Humanoids</span>
+						<span class="dropdown-icon"><i class="fa fa-sort"></i></span>
+						<ul class="dropdown-list">
+							<li>Humanoids</li>
+							<li>Animals</li>
+						</ul>
+					</div>
+				</div>
+				<div class="menu-grid menu-grid-sprite">
+					<li class="sprite"></li>
+					<li class="sprite"></li>
+					<li class="sprite"></li>
+					<li class="sprite"></li>
+				</div>
+			</section>
+		</div>
+
+		<!-- Javascript -->
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+		<script type="text/javascript" src="master.js"></script>
 
 	</body>
 </html>
