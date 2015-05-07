@@ -1,7 +1,20 @@
 var WorkSpace = Backbone.View.extend({
+
 	initialize: function() {
 		this.selectedTile = null;
+
+		this.paintEnabled = true;
 		this.isPainting = false;
+
+		this.panEnabled = false;
+		this.isPanning = false;
+
+		this.activeTool = 'paint';
+		this.previousTool = this.activeTool;
+
+		this.keyMap = {
+			32: 		"pan"		//Spacebar
+		};
 	},
 
 	events: {
@@ -11,7 +24,12 @@ var WorkSpace = Backbone.View.extend({
 		'mouseup #canvas .tile': 		'stopPainting',
 		'click #canvas .tile': 			'dispatch',
 
-		'mousemove #canvas .tile': 		'dispatch',
+		'mousedown #canvas': 			'dispatch',
+		'mousemove #canvas': 			'move',
+		'mouseup': 						'clearMouseAction',
+
+		'keypress': 					'toolSelect',
+		//'keyup': 						'toolRelease',
 	},
 
 	selectTile: function(e) {
@@ -24,8 +42,24 @@ var WorkSpace = Backbone.View.extend({
 	},
 
 	dispatch: function(e) {
-		var mode = $("#tools .btn.active").text().toLowerCase();
-		this[mode](e);
+		this.x = e.screenX;
+		this.y = e.screenY;
+		switch (this.activeTool) {
+			case "paint": this.isPainting = true; break;
+			case "pan": this.isPanning = true; break;
+		}
+	},
+
+	clearMouseAction: function(e) {
+		e.stopPropagation();
+		this.isPanning = false;
+		this.isPainting = false;
+	},
+
+	move: function(e) {
+		if (this.panEnabled && this.isPanning) {
+			this.pan(e);
+		}
 	},
 
 	startPainting: function() {
@@ -59,6 +93,48 @@ var WorkSpace = Backbone.View.extend({
 		var tile = $(e.target);
 		tile.css({
 			background: "transparent",
+		});
+	},
+
+	toolSelect: function(e) {
+		if (e.keyCode in this.keyMap) {
+			this.previousTool = this.activeTool;
+			this.activeTool = this.keyMap[e.keyCode];
+			switch (e.keyCode) {
+				case 32: this.enablePanning(); break;
+			}
+		}
+	},
+
+	toolRelease: function(e) {
+		if (this.panEnabled) {
+			if (this.previousTool != this.activeTool) {
+				this.activeTool = this.previousTool;
+			}
+			this.disablePanning(e);
+		}
+	},
+
+	enablePanning: function() {
+		this.panEnabled = true;
+		$("#canvas").addClass("panning");
+	},
+
+	disablePanning: function(e) {
+		//e.stopPropagation();
+		this.panEnabled = false;
+		this.isPanning = false;
+		$("#canvas").removeClass("panning");	
+	},
+
+	pan: function(e) {
+		var x = this.x - e.screenX,
+			y = this.y - e.screenY;
+		this.x = e.screenX;
+		this.y = e.screenY;
+		$("#canvas").css({
+			top: "-=" + y + "px",
+			left: "-=" + x + "px",
 		});
 	}
 

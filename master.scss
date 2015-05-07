@@ -31,8 +31,10 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 * GLOBAL
 \***********************************************/
 body {
-	font-family: 'Arial', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 14px;
+	background: url('./img/transp_bg.png') top left repeat;
+	overflow: hidden;
 }
 
 * {
@@ -68,7 +70,6 @@ header {
 
 	.heading {
 		padding: 8px;
-		font-family: 'Arial', sans-serif;
 		text-transform: uppercase;
 		font-size: 12px;
 		letter-spacing: 1px;
@@ -175,11 +176,16 @@ header {
       -ms-user-select: none;
        -o-user-select: none;
           user-select: none;
-	position: fixed;
+	position: absolute;
+	top: 0;
+	left: 0;
 	height: 100%;
 	width: 100%;
 	background: url('./sample.png') center center no-repeat;
-	background-size: cover;
+
+	&.panning {
+		cursor: move;
+	}
 }
 
 #canvas .tile img {
