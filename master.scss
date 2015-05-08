@@ -1,3 +1,5 @@
+@import 'normalize';
+
 /***********************************************\
 * MIXINS
 \***********************************************/
@@ -9,23 +11,6 @@
 	background-image: linear-gradient(-180deg, rgba(52, 52, 52, 1) 0%, rgba(35, 35, 35, 1) 97%, rgba(54, 54, 54, 1) 100%);
 }
 
-/***********************************************\
-* RESET
-\***********************************************/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-	border: 0;
-	margin: 0;
-	padding: 0;
-	vertical-align: baseline;
-}
 
 /***********************************************\
 * GLOBAL
@@ -37,20 +22,21 @@ body {
 	overflow: hidden;
 }
 
-* {
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	    -ms-box-sizing: border-box;
-	     -o-box-sizing: border-box;
-			box-sizing: border-box;
+ul, li {
+	list-style-type:none;
+	margin:0;
+	padding:0;
 }
+
 
 /***********************************************\
 * HEADER
 \***********************************************/
+$header-height: 60px;
+
 header {
 	position: fixed;
-	height: 90px;
+	height: $header-height;
 	width: 100%;
 	background: rgba(52, 52, 52, 1);
 	border-bottom: 1px solid rgba(35, 35, 35, 1);
@@ -62,8 +48,8 @@ header {
 \***********************************************/
 .menu {
 	position: fixed;
-	top: 90px;
-	height: calc(100% - 90px);
+	top: $header-height;
+	height: calc(100% - #{$header-height});
 	width: 296px;
 	background: rgba(52, 52, 52, 0.95);
 	border: 1px solid rgba(35, 35, 35, 1);
@@ -111,7 +97,7 @@ header {
 
 	.dropdown {
 		position: relative;
-		width: 96%;
+		width: 99%;
 		margin: 8px auto;
 		padding: 6px 10px;
 		border: 1px solid rgba(26, 26, 26, 1);
@@ -151,7 +137,7 @@ header {
 			background: rgba(87, 87, 87, 1);
 
 			&.selected {
-				border: 2px solid rgba(244, 238, 197, 1);	
+				border: 2px solid rgba(244, 238, 197, 1);
 			}
 
 			&.tile {
